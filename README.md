@@ -4,6 +4,8 @@
 
 GamesListApp is a monolithic API built using **ASP.NET Core** with **Entity Framework Core** and **SQL Server** as the database. The API includes Swagger for testing and documentation.
 
+To use this API, you must set up your own local SQL Server database and configure the connection string in `appsettings.json`. 
+
 ---
 
 ## Project Structure
