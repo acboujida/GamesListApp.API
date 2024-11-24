@@ -1,0 +1,28 @@
+version: '3'
+services:
+  ms-sql-server:
+    container_name: ms-sql-server
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Pa55w0rd2024
+      - MSSQL_PID=Express
+    ports:
+      - 1433:1433
+    networks:
+      - app-network
+
+  gameslistapp-api:
+    container_name: gameslistapp-api
+    image: acboujida/gameslistapp:latest
+    build: .
+    ports:
+      - 8080:80
+    depends_on:
+      - ms-sql-server
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
